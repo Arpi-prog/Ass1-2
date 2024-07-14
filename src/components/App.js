@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet } from 'react-native';
- import GetStartedPage from './src/components/GetStartedPage';
- import LoginPage from './src/components/LoginPage';
- import RegisterPage from './src/components/RegisterPage';
+import ButtonComponent from './ButtonComponent';
 
 const App = () => {
-  const [currentPage, setCurrentPage] = useState('GetStarted');
-
-  const renderPage = () => {
-    if (currentPage === 'GetStarted') {
-      return <GetStartedPage navigateTo={setCurrentPage} />;
-    } else if (currentPage === 'Login') {
-      return <LoginPage navigateTo={setCurrentPage} />;
-    } else if (currentPage === 'Register') {
-      return <RegisterPage navigateTo={setCurrentPage} />;
-    } else if (currentPage === 'Home') {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.title}>Home Screen</Text>
-        </View>
-      );
-    }
-    return null;
-  };
-
-  return <View style={{ flex: 1 }}>{renderPage()}</View>;
+  return (
+    <View style={styles.container}>
+      <ButtonComponent kind="primary" size="large" iconName="star">
+        Primary Button
+      </ButtonComponent>
+      <ButtonComponent kind="secondary" variant="outlined" size="medium">
+        Secondary Button
+      </ButtonComponent>
+      <ButtonComponent kind="success" size="small" iconName="thumbs-up">
+        Success Button
+      </ButtonComponent>
+      <ButtonComponent kind="danger" variant="default" iconName="alert">
+        Danger Button
+      </ButtonComponent>
+      <ButtonComponent kind="warning" size="large" iconName="warning" >Warning Button</ButtonComponent>
+      <ButtonComponent kind="info" iconName="information-circle">
+        Info Button
+      </ButtonComponent>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -33,13 +31,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
 });
 
 export default App;
-
-
-
